@@ -1,4 +1,5 @@
-fastcampus_mysql/db
+fastcampus_mysql/
+vendor/
 
 *.exe
 *.exe~
