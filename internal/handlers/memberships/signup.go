@@ -27,7 +27,10 @@ func (h *Handler) SignUp(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"message": "User  signed up successfully",
-		"data":    request, // Optionally return the request data or any other relevant info
+		"message": "User signed up successfully",
+		"data": gin.H{
+			"email":    request.Email,
+			"username": request.Username,
+		},
 	})
 }
