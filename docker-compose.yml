@@ -9,4 +9,5 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=fastcampus
     volumes:
-      - /Users/moladin/Code/fastcampus-forum/fastcampus_mysql/db:/var/lib/mysql
+    - /Users/moladin/Code/fastcampus-forum/fastcampus_mysql/db:/var/lib/mysql
+      # - /home/nurfa/code/golang/fastcampus/fastcampus_mysql/db:/var/lib/mysql
