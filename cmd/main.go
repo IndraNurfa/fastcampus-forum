@@ -5,7 +5,8 @@ import (
 
 	"github.com/IndraNurfa/fastcampus/internal/configs"
 	"github.com/IndraNurfa/fastcampus/internal/handlers/memberships"
-	membershipsRepo "github.com/IndraNurfa/fastcampus/internal/repository/memberships"
+	membershipRepo "github.com/IndraNurfa/fastcampus/internal/repository/memberships"
+	membershipSvc "github.com/IndraNurfa/fastcampus/internal/service/memberships"
 	"github.com/IndraNurfa/fastcampus/pkg/internalsql"
 	"github.com/gin-gonic/gin"
 )
@@ -36,10 +37,11 @@ func main() {
 		log.Fatal("Gagal koneksi ke database", err)
 	}
 
-	_ = membershipsRepo.NewRepository(db)
+	membershipRepo := membershipRepo.NewRepository(db)
+	membershipService := membershipSvc.NewService(membershipRepo)
 
-	membershipHandler := memberships.NewHandler(r)
-	membershipHandler.RegisterRoutes()
+	membershipsHandler := memberships.NewHandler(r, membershipService)
+	membershipsHandler.RegisterRoutes()
 
 	r.Run(cfg.Service.Port) // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
