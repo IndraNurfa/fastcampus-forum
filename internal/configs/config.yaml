@@ -1,5 +1,6 @@
 service:
   port: ":9876"
+  secretJWT: "2a55b3246d8b4a1a907c847b78e30447"
 
 database:
   dataSourceName: "root:root@tcp(localhost:3306)/fastcampus?parseTime=true"
