@@ -21,11 +21,11 @@ func AuthMiddleware() gin.HandlerFunc {
 			return
 		}
 
-		UserID, username, err := jwt.ValidateToken(header, secretKey)
+		userID, username, err := jwt.ValidateToken(header, secretKey)
 		if err != nil {
 			ctx.AbortWithError(http.StatusUnauthorized, err)
 		}
-		ctx.Set("userID", UserID)
+		ctx.Set("userID", userID)
 		ctx.Set("username", username)
 		ctx.Next()
 	}
