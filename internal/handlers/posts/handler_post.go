@@ -14,6 +14,7 @@ type postService interface {
 	UpsertUserActivity(ctx context.Context, postID, userID int64, request posts.UserActivityRequest) error
 	GetAllPost(ctx context.Context, pageSize, pageIndex int) (posts.GetAllPostResponse, error)
 	GetPostByID(ctx context.Context, userID, postID int64) (*posts.GetPostResponse, error)
+
 }
 
 type Handler struct {
@@ -37,4 +38,5 @@ func (h *Handler) RegisterRoutes() {
 	route.POST("/user_activity/:postID", h.UpsertUserActivity)
 	route.GET("/", h.GetAllPost)
 	route.GET("/:postID", h.GetPostByID)
+
 }

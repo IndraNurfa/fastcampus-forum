@@ -51,6 +51,7 @@ func (r *repository) GetAllPost(ctx context.Context, limit, offset int) (posts.G
 		Offset: offset,
 	}
 	return response, nil
+
 }
 
 func (r *repository) GetPostByID(ctx context.Context, userID, postID int64) (*posts.Post, error) {
@@ -76,4 +77,6 @@ func (r *repository) GetPostByID(ctx context.Context, userID, postID int64) (*po
 		PostHashtags: strings.Split(model.PostHashtags, ","),
 		IsLiked:      isLiked,
 	}, nil
+=======
+
 }

@@ -17,9 +17,11 @@ type postRepository interface {
 
 	GetAllPost(ctx context.Context, limit, offset int) (posts.GetAllPostResponse, error)
 
+
 	GetPostByID(ctx context.Context, userID, postID int64) (*posts.Post, error)
 	CountLikedByPostID(ctx context.Context, postID int64) (int, error)
 	GetCommentByPostID(ctx context.Context, postID int64) ([]posts.Comment, error)
+
 }
 
 type service struct {
