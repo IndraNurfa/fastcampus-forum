@@ -2,14 +2,17 @@ package memberships
 
 import (
 	"context"
+	"time"
 
 	"github.com/IndraNurfa/fastcampus/internal/configs"
 	"github.com/IndraNurfa/fastcampus/internal/model/memberships"
 )
 
 type membershipRepository interface {
-	GetUser(ctx context.Context, email, username string) (*memberships.UserModel, error)
+	GetUser(ctx context.Context, email, username string, userID int64) (*memberships.UserModel, error)
 	CreateUser(ctx context.Context, model memberships.UserModel) error
+	InsertRefreshToken(ctx context.Context, model memberships.RefreshTokenModel) error
+	GetRefreshToken(ctx context.Context, userID int64, now time.Time) (*memberships.RefreshTokenModel, error)
 }
 
 type service struct {
