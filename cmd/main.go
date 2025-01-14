@@ -55,5 +55,5 @@ func main() {
 	postHandler := posts.NewHandler(r, postService)
 	postHandler.RegisterRoutes()
 
-	r.Run(cfg.Service.Port) // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	r.Run(cfg.Service.Port)
 }
