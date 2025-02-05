@@ -8,3 +8,6 @@ migrate-up:
 
 migrate-down:
 	@ migrate -database ${MYSQL_URL} -path scripts/migrations down
+
+run:
+	go run cmd/main.go
