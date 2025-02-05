@@ -17,6 +17,11 @@ type (
 	RefreshTokenRequest struct {
 		Token string `json:"token"`
 	}
+
+	UpdateUserRequest struct {
+		Email    string `json:"email"`
+		Username string `json:"username"`
+	}
 )
 
 type (

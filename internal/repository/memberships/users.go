@@ -30,3 +30,12 @@ func (r *repository) CreateUser(ctx context.Context, model memberships.UserModel
 	}
 	return nil
 }
+
+func (r *repository) UpdateUser(ctx context.Context, model memberships.UserModel) error {
+	query := `UPDATE users SET email = ?, username = ?, updated_at = ?, updated_by = ? WHERE id = ?`
+	_, err := r.db.ExecContext(ctx, query, model.Email, model.Username, model.UpdatedAt, model.UpdatedBy, model.ID)
+	if err != nil {
+		return err
+	}
+	return nil
+}
